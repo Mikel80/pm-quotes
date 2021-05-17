@@ -132,17 +132,17 @@ const comoditiesData = [
   { id: "019sajhguyw1234", name: "Lemon" },
 ];
 
-const nationalDestinations = [
-  { id: "oioyuityywr82781", name: "Mexico City" },
-  { id: "92788hqjkhkwhiw", name: "Leon" },
-  { id: "0101isjijwie", name: "Monterrey" },
-];
+// const nationalDestinations = [
+//   { id: "oioyuityywr82781", name: "Mexico City" },
+//   { id: "92788hqjkhkwhiw", name: "Leon" },
+//   { id: "0101isjijwie", name: "Monterrey" },
+// ];
 
-const internationalDestinations = [
-  { id: "oioyuityywr82781", name: "The Netherlands" },
-  { id: "92788hqjkhkwhiw", name: "Dubai" },
-  { id: "0101isjijwie", name: "Los Angeles" },
-];
+// const internationalDestinations = [
+//   { id: "oioyuityywr82781", name: "The Netherlands" },
+//   { id: "92788hqjkhkwhiw", name: "Dubai" },
+//   { id: "0101isjijwie", name: "Los Angeles" },
+// ];
 
 const useStyles = makeStyles({
   root: {
@@ -265,6 +265,14 @@ const Calculator = () => {
             <TextField {...params} variant="standard" label="Comodities" />
           )}
         />
+      </div>
+      <div>
+        Selected Comodities:
+        <ul>
+          {comodities.map((comoditie) => (
+            <li key={comoditie.id}>{comoditie.name}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
