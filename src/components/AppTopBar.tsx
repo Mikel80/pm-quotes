@@ -1,11 +1,15 @@
-import React, { lazy, Suspense, useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
-import AppTopBar from "./components/AppTopBar";
-import SideDrawer from "./components/SideDrawer";
-import "./App.css";
-const Calculator = lazy(() => import("./pages/Calculator"));
-const Home = lazy(() => import("./pages/Home"));
+import React from "react";
+import clsx from "clsx";
+import {
+  AppBar,
+  createStyles,
+  IconButton,
+  makeStyles,
+  Theme,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
+import { Menu } from "@material-ui/icons";
 
 const drawerWidth = 240;
 
@@ -73,39 +77,37 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-function App() {
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <div className={classes.root}>
-      <Router>
-        <AppTopBar open={open} handleDrawerOpen={handleDrawerOpen} />
-        <SideDrawer open={open} handleDrawerClose={handleDrawerClose} />
-        <Suspense fallback={<div>Loading...</div>}>
-          <main className={classes.content}>
-            <div className={classes.toolbar} />
-            <Switch>
-              <Route path="/calculator">
-                <Calculator />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </main>
-        </Suspense>
-      </Router>
-    </div>
-  );
+interface TopBarProps {
+  open: boolean;
+  handleDrawerOpen: () => void;
 }
 
-export default App;
+const AppTopBar = ({ open, handleDrawerOpen }: TopBarProps) => {
+  const classes = useStyles();
+
+  return (
+    <AppBar
+      position="fixed"
+      className={clsx(classes.appBar, {
+        [classes.appBarShift]: open,
+      })}
+    >
+      <Toolbar>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={handleDrawerOpen}
+          edge="start"
+          className={clsx(classes.menuButton, open && classes.hide)}
+        >
+          <Menu />
+        </IconButton>
+        <Typography variant="h6" noWrap>
+          Qauotation App
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+export default AppTopBar;
