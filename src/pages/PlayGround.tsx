@@ -22,7 +22,7 @@ const PlayGround = () => {
   const getG2Device = async () => {
     try {
       const device = navigator.usb.requestDevice({
-        filters: [{ vendorId: 0x0951 }],
+        filters: [{ vendorId: 0x0951 }, { vendorId: 0x046d }],
       });
       console.log(device);
     } catch (err) {
