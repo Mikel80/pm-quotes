@@ -6,6 +6,7 @@ import SideDrawer from "./components/SideDrawer";
 import "./App.css";
 const Calculator = lazy(() => import("./pages/Calculator"));
 const Home = lazy(() => import("./pages/Home"));
+const PlayGround = lazy(() => import("./pages/PlayGround"));
 
 const drawerWidth = 240;
 
@@ -96,6 +97,9 @@ function App() {
             <Switch>
               <Route path="/calculator">
                 <Calculator />
+              </Route>
+              <Route path="/playground">
+                <PlayGround />
               </Route>
               <Route path="/">
                 <Home />

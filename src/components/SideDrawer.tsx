@@ -134,7 +134,7 @@ const SideDrawer = ({ open, handleDrawerClose }: SideDrawerProps) => {
       </List>
       <Divider />
       <List>
-        <ListItem button component={Link} to="/">
+        <ListItem button component={Link} to="/playground">
           <ListItemIcon>
             <People />
           </ListItemIcon>
