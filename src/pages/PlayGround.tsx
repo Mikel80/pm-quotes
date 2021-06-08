@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const PlayGround = () => {
-  //   const getUsbDevices = async () => {
-  //     try {
-  //       const devices = await navigator.usb.getDevices();
-  //       devices.forEach((device) => {
-  //         console.log(device.vendorId);
-  //         console.log(device.productName);
-  //         console.log(device.manufacturerName);
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
+  const getUsbDevices = async () => {
+    try {
+      const devices = await navigator.usb.getDevices();
+      console.log("Devices", devices);
+      devices.forEach((device) => {
+        console.log(device.vendorId);
+        console.log(device.productName);
+        console.log(device.manufacturerName);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getUsbDevices();
+  }, []);
 
   const getG2Device = async () => {
     try {
